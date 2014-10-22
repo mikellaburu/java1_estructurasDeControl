@@ -1,0 +1,60 @@
+
+/*
+ * Programa que pide dos números y un operador y muestra el resultado
+ */
+import java.util.*;
+import java.io.*;
+public class Ejemplo1Switch {
+    public static void main(String[] args) throws IOException{
+	//declara las variables de tipo entero A, B y Resultado y a Resultado le asigna el valor 0
+        int A,B, Resultado = 0 ; 
+
+	//declara la variable de tipo caracter operador
+        char operador;  
+
+	//declara la variable de tipo booleano calculado
+        boolean calculado = true;  
+        Scanner sc = new Scanner(System.in);  
+        System.out.print("Introduzca un numero entero:");
+        A = sc.nextInt();
+        System.out.print("Introduzca otro numero entero:");
+        B = sc.nextInt();
+        System.out.print("Introduzca un operador (+,-,*,/):");
+
+	/* se asigna valor a operador, forzando la conversion a caracter de lo que se captura por pantalla con el metodo abstracto read()
+	   de la clase InputStream de la Clase System del paquete java.lang, que devuelve un byte (8 bits, representa un caracter). 
+	   Mas informacion: http://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html   */
+        operador = (char)System.in.read();  
+	
+	/*dependiendo del valor de la variable operador(tipo char), ira al case que corresponda sin tener que mirar los demas casos. 
+	  Si no corresponde a ninguno, ira a default  */
+        switch (operador) {  
+                case '-' : Resultado = A - B;  
+                           break;
+                case '+' : Resultado = A + B;
+                           break;
+                case '*' : Resultado = A * B;
+                           break;
+
+		//en el caso que operador tenga el valor '/' se comprueba si B no es igual a 0, y si se cumple se ejecuta la siguente linea, la division
+                case '/' : if(B!=0)
+                              Resultado = A / B;
+			   //si no se cumple la condicion (si B es 0), muestra el siguiente mensaje y a calculado se le da valor false
+                           else{
+                              System.out.println("\nNo se puede dividir por cero");
+                              calculado = false;
+                           }
+                           break;
+                default : System.out.println("\nOperador no valido");
+			//si no se cumple ninguno de los casos anteriores, calculado tomara el valor false
+                          calculado = false;
+                         
+        }
+
+	//Si calculado tiene el valor true se cumple la condicion y se ejecutara lo que este entre llaves, mostrar el resultado en este caso
+        if(calculado){ 
+            System.out.println("\nEl resultado es: " + Resultado);
+        }
+    }
+}
+

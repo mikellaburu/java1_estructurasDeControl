@@ -1,0 +1,22 @@
+ /*
+ * programa que lee un número n y muestra n asteriscos
+ */
+import java.util.*;
+public class Ejemplo2While {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+	//se declaran las variables de tipo entero n y contador, y a contador se le asigna 0
+        int n, contador = 0;
+        System.out.print("Introduce un número: ");
+        n = sc.nextInt();
+
+	/* mientras contador sea menor que n(introducido por teclado), se ejecutara lo que estye entre llaves una y otra vez, 
+	   hasta que contador sea igual o mayor que n
+	*/
+        while (contador < n){
+               System.out.println(" * ");
+		//suma 1 al valor que tenga contador, cada vuelta que de el bucle contador ira sumandose 1
+               contador++;  
+        }
+    }
+}
